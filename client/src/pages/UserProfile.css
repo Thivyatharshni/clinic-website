@@ -1,0 +1,216 @@
+/* ================= PAGE LAYOUT ================= */
+.profile-page {
+  min-height: calc(100vh - 80px); /* navbar height adjustment */
+  display: flex;
+  justify-content: center;
+  align-items: center;            /* ✅ center vertically */
+  background: #f4f7fb;
+  padding: 40px 20px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* ================= PROFILE CARD ================= */
+.profile-card {
+  width: 100%;
+  max-width: 520px;               /* ✅ slightly wider */
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 34px;                  /* ✅ more spacing */
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+  transform: scale(1.05);         /* ✅ subtle zoom */
+  animation: fadeInUp 0.4s ease;
+}
+
+/* ================= HEADER ================= */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 25px;
+}
+
+/* Avatar circle */
+.avatar {
+  width: 68px;
+  height: 68px;
+  background: #0f766e;
+  color: #ffffff;
+  font-size: 30px;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Name + email */
+.profile-header h2 {
+  margin: 0;
+  font-size: 22px;
+  color: #0f766e;
+}
+
+.profile-header .email {
+  margin-top: 4px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* ================= DETAILS SECTION ================= */
+.profile-details {
+  border-top: 1px solid #e5e7eb;
+  margin-top: 20px;
+}
+
+/* Each row */
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  font-size: 15px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+/* Labels */
+.detail-row span:first-child {
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* Values */
+.detail-row span:last-child {
+  color: #111827;
+  font-weight: 600;
+}
+
+/* ================= LOADING / EMPTY ================= */
+.loading-text {
+  padding: 40px;
+  text-align: center;
+  font-size: 16px;
+  color: #374151;
+}
+
+/* ================= ANIMATION ================= */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.05) translateY(0);
+  }
+}
+
+/* ================= EDIT FORM ================= */
+.edit-form {
+  border-top: 1px solid #e5e7eb;
+  margin-top: 20px;
+  padding-top: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #0f766e;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.edit-btn, .form-actions button {
+  padding: 12px 24px;
+  background: #0f766e;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.edit-btn:hover, .form-actions button:hover:not(.cancel-btn) {
+  background: #0d5f58;
+}
+
+.cancel-btn {
+  background: #6b7280 !important;
+}
+
+.cancel-btn:hover {
+  background: #4b5563 !important;
+}
+
+.message {
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 16px;
+  text-align: center;
+}
+
+.message.success {
+  background: #dcfce7;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+.message.error {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+@media (max-width: 500px) {
+  .profile-card {
+    padding: 26px;
+    transform: scale(1);          /* avoid over-zoom on small screens */
+  }
+
+  .detail-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .form-actions button {
+    width: 100%;
+  }
+}

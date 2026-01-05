@@ -1,0 +1,349 @@
+/* ================= CORPORATE HEALTH PAGE ================= */
+.corporate-page {
+  font-family: "Segoe UI", sans-serif;
+  color: #1f2937;
+  background: #f8fafc;
+  min-height: 100vh;
+}
+
+/* ================= HERO SECTION ================= */
+.corp-hero {
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #06b6d4 100%);
+  color: white;
+  text-align: center;
+  padding: 80px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.corp-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.03"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.02"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.04"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  pointer-events: none;
+}
+
+.corp-tag {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-size: 16px;
+  display: inline-block;
+  margin-bottom: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.corp-hero h1 {
+  font-size: 48px;
+  font-weight: 800;
+  margin: 20px 0 16px;
+  line-height: 1.2;
+}
+
+.corp-hero h1 span {
+  color: #fbbf24;
+  position: relative;
+}
+
+.corp-hero h1 span::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #fbbf24;
+  border-radius: 2px;
+}
+
+.corp-hero p {
+  max-width: 700px;
+  margin: 0 auto 30px;
+  font-size: 18px;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+
+.corp-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn.whatsapp {
+  background: #16a34a;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(22, 163, 74, 0.3);
+}
+
+.btn.whatsapp:hover {
+  background: #15803d;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(22, 163, 74, 0.4);
+}
+
+.btn.call {
+  background: #0ea5e9;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+}
+
+.btn.call:hover {
+  background: #0284c7;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(14, 165, 233, 0.4);
+}
+
+.btn.email {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.8);
+  color: white;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+}
+
+.btn.email:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+}
+
+
+
+/* Remove duplicate btn styles */
+
+/* SERVICES */
+.corp-services {
+  padding: 70px 20px;
+  text-align: center;
+}
+
+.section-sub {
+  color: #64748b;
+  margin-bottom: 40px;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.service-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+
+.service-card img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.service-card h3 {
+  margin-top: 15px;
+}
+
+.service-card ul {
+  text-align: left;
+  padding-left: 0;
+  margin-top: 10px;
+}
+
+.service-card li {
+  list-style: none;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+/* OUTREACH */
+.corp-outreach {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #0f766e, #2563eb);
+  color: #fff;
+  text-align: center;
+}
+
+.outreach-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: 40px auto 0;
+}
+
+.outreach-card {
+  background: rgba(255,255,255,0.15);
+  padding: 30px;
+  border-radius: 14px;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.outreach-card:hover {
+  transform: translateY(-6px);
+  background: rgba(255,255,255,0.25);
+}
+
+/* CTA */
+.corp-cta {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.cta-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.cta-grid a {
+  padding: 14px 26px;
+  border-radius: 10px;
+  background: #f1f5f9;
+  color: #0f172a;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.cta-grid a:hover {
+  background: #e2e8f0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ================= RESPONSIVE DESIGN ================= */
+@media (max-width: 768px) {
+  .corp-hero {
+    padding: 60px 20px;
+  }
+
+  .corp-hero h1 {
+    font-size: 36px;
+  }
+
+  .corp-hero p {
+    font-size: 16px;
+  }
+
+  .corp-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn {
+    width: 200px;
+    justify-content: center;
+  }
+
+  .service-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .corp-services,
+  .corp-outreach,
+  .corp-cta {
+    padding: 60px 20px;
+  }
+
+  .outreach-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .corp-outreach {
+    padding: 60px 20px;
+  }
+
+  .cta-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cta-grid a {
+    width: 200px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .corp-hero h1 {
+    font-size: 28px;
+  }
+
+  .corp-hero p {
+    font-size: 14px;
+  }
+
+  .btn {
+    width: 180px;
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+
+  .service-card {
+    padding: 15px;
+  }
+
+  .service-card h3 {
+    font-size: 18px;
+  }
+
+  .corp-services,
+  .corp-outreach,
+  .corp-cta {
+    padding: 50px 15px;
+  }
+}

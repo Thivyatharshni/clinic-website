@@ -1,0 +1,424 @@
+/* ================= CAREERS PAGE ================= */
+.careers {
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+  color: #1a202c;
+  min-height: 100vh;
+}
+
+/* ================= HERO ================= */
+.careers-hero {
+  position: relative;
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #fef2f2 0%, #fce7f3 50%, #f3e8ff 100%);
+  color: #374151;
+  overflow: hidden;
+}
+
+.careers-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.03"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.02"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.04"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  pointer-events: none;
+}
+
+.tag {
+  background: rgba(255, 255, 255, 0.8);
+  color: #7c3aed;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 16px;
+  display: inline-block;
+  margin-bottom: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(124, 58, 237, 0.2);
+  box-shadow: 0 4px 15px rgba(124, 58, 237, 0.1);
+  animation: badgeGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes badgeGlow {
+  from { box-shadow: 0 0 10px rgba(255, 255, 255, 0.3); }
+  to { box-shadow: 0 0 25px rgba(255, 255, 255, 0.6); }
+}
+
+.careers-hero h1 {
+  font-size: 48px;
+  font-weight: 800;
+  margin: 20px 0 16px;
+  line-height: 1.2;
+  animation: titleSlideIn 1s ease-out;
+}
+
+@keyframes titleSlideIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.careers-hero h1::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: #fbbf24;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.careers-hero p {
+  max-width: 700px;
+  margin: 0 auto 40px;
+  font-size: 18px;
+  line-height: 1.6;
+  opacity: 0.95;
+  animation: fadeInUp 1.2s ease-out;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ================= STATS ================= */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 30px;
+  max-width: 600px;
+  margin: 0 auto 60px;
+}
+
+.stats > div {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  animation: statFadeIn 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.stats > div:nth-child(1) { animation-delay: 0.2s; }
+.stats > div:nth-child(2) { animation-delay: 0.4s; }
+.stats > div:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes statFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.stats h3 {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: #fbbf24;
+}
+
+.stats span {
+  font-size: 14px;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+/* ================= JOBS ================= */
+.jobs {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 70px 20px;
+  background: #f8fafc;
+}
+
+.jobs h2 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 50px;
+  font-weight: 700;
+  color: #1e40af;
+}
+
+.jobs h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #1e40af, #3b82f6);
+  margin: 15px auto 0;
+  border-radius: 2px;
+}
+
+.job-card {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  margin-bottom: 25px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.job-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #1e40af, #3b82f6);
+  transition: width 0.3s ease;
+}
+
+.job-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+.job-card:hover::before {
+  width: 6px;
+}
+
+.job-card h3 {
+  font-size: 24px;
+  margin-bottom: 8px;
+  color: #1e40af;
+  font-weight: 700;
+}
+
+.job-card p {
+  color: #64748b;
+  font-size: 16px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.job-card ul {
+  margin: 20px 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.job-card li {
+  margin-bottom: 12px;
+  padding-left: 20px;
+  position: relative;
+  color: #475569;
+  line-height: 1.5;
+}
+
+.job-card li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #10b981;
+  font-weight: bold;
+}
+
+/* Job buttons */
+.job-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+}
+
+.job-actions a {
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.job-actions a:first-child {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.job-actions a:first-child:hover {
+  background: linear-gradient(135deg, #059669, #047857);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+}
+
+.job-actions a:last-child {
+  background: white;
+  color: #1e40af;
+  border: 2px solid #1e40af;
+  box-shadow: 0 4px 15px rgba(30, 64, 175, 0.2);
+}
+
+.job-actions a:last-child:hover {
+  background: #1e40af;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(30, 64, 175, 0.3);
+}
+
+/* ================= WHY SECTION ================= */
+.why {
+  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+  padding: 70px 20px;
+  text-align: center;
+}
+
+.why h2 {
+  font-size: 36px;
+  margin-bottom: 15px;
+  font-weight: 700;
+  color: #1e40af;
+}
+
+.why h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #1e40af, #3b82f6);
+  margin: 15px auto 0;
+  border-radius: 2px;
+}
+
+.why p {
+  color: #64748b;
+  margin-bottom: 50px;
+  font-size: 16px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.why-box {
+  padding: 30px 25px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e40af;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.why-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(30, 64, 175, 0.05), transparent);
+  transition: left 0.6s;
+}
+
+.why-box:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  border-color: #3b82f6;
+}
+
+.why-box:hover::before {
+  left: 100%;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .careers-hero {
+    padding: 60px 20px;
+  }
+
+  .careers-hero h1 {
+    font-size: 36px;
+  }
+
+  .careers-hero p {
+    font-size: 16px;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 400px;
+  }
+
+  .jobs {
+    padding: 60px 20px;
+  }
+
+  .jobs h2 {
+    font-size: 28px;
+  }
+
+  .job-card {
+    padding: 25px;
+  }
+
+  .job-card h3 {
+    font-size: 20px;
+  }
+
+  .job-actions {
+    flex-direction: column;
+  }
+
+  .job-actions a {
+    text-align: center;
+    justify-content: center;
+  }
+
+  .why-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .careers-hero h1 {
+    font-size: 28px;
+  }
+
+  .careers-hero p {
+    font-size: 14px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .stats > div {
+    padding: 20px;
+  }
+
+  .job-card {
+    padding: 20px;
+  }
+
+  .why {
+    padding: 50px 15px;
+  }
+}

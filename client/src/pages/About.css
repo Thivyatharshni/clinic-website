@@ -1,0 +1,580 @@
+/* ================= GLOBAL ================= */
+.about-page {
+  font-family: var(--font-family-primary);
+  min-height: 100vh;
+  background: var(--gray-50);
+}
+
+/* ================= HERO ================= */
+.about-hero {
+  position: relative;
+  text-align: center;
+  padding: 50px 20px; /* ⬅️ reduced from 70 */
+  background: linear-gradient(135deg, #eaf7f6, #ffffff);
+  overflow: hidden;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.about-badge {
+  background: #e7f7f6;
+  color: #1aa7a1;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  display: inline-block;
+  margin-bottom: 12px;
+  animation: badgeGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes badgeGlow {
+  from { box-shadow: 0 0 5px rgba(26, 167, 161, 0.3); }
+  to { box-shadow: 0 0 20px rgba(26, 167, 161, 0.6); }
+}
+
+.about-hero h1 {
+  margin: 12px 0;
+  animation: titleSlideIn 1s ease-out;
+}
+
+@keyframes titleSlideIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.about-hero h1 span {
+  color: #1aa7a1;
+}
+
+.about-hero p {
+  max-width: 700px;
+  margin: 0 auto;
+  color: #555;
+  line-height: 1.6;
+  font-size: 20px;
+  animation: fadeInUp 1.2s ease-out;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ================= FLOATING MEDICAL ICONS ================= */
+.hero-animations {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floating-icon {
+  position: absolute;
+  font-size: 2rem;
+  animation: floatUpDown 4s ease-in-out infinite;
+  opacity: 0.7;
+}
+
+.icon-1 {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+  animation-duration: 5s;
+}
+
+.icon-2 {
+  top: 15%;
+  right: 15%;
+  animation-delay: 1s;
+  animation-duration: 6s;
+}
+
+.icon-3 {
+  bottom: 25%;
+  left: 20%;
+  animation-delay: 2s;
+  animation-duration: 4.5s;
+}
+
+.icon-4 {
+  bottom: 20%;
+  right: 10%;
+  animation-delay: 0.5s;
+  animation-duration: 5.5s;
+}
+
+.icon-5 {
+  top: 50%;
+  left: 5%;
+  animation-delay: 1.5s;
+  animation-duration: 4.8s;
+}
+
+@keyframes floatUpDown {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+/* ================= ABOUT CLINIC ================= */
+.about-clinic {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px; /* ⬅️ reduced from 40 */
+  padding: 50px 20px; /* ⬅️ reduced from 60 */
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.about-text ul {
+  margin-top: 12px;
+  padding-left: 18px;
+}
+
+.about-text li {
+  margin-bottom: 6px; /* ⬅️ tighter */
+  color: #444;
+  animation: listItemFadeIn 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.about-text li:nth-child(1) { animation-delay: 0.2s; }
+.about-text li:nth-child(2) { animation-delay: 0.4s; }
+.about-text li:nth-child(3) { animation-delay: 0.6s; }
+.about-text li:nth-child(4) { animation-delay: 0.8s; }
+
+@keyframes listItemFadeIn {
+  to { opacity: 1; transform: translateX(0); }
+  from { opacity: 0; transform: translateX(-20px); }
+}
+
+/* ================= VISUAL ELEMENTS ================= */
+.about-visuals {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about-image.main-image {
+  position: relative;
+  animation: imageSlideIn 1s ease-out;
+}
+
+@keyframes imageSlideIn {
+  from { opacity: 0; transform: scale(0.9) translateY(30px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.about-image img {
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.about-image:hover img {
+  transform: scale(1.02);
+}
+
+/* ================= SIDE IMAGES ================= */
+.side-images {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.side-image {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.side-image:hover {
+  transform: translateY(-5px);
+}
+
+.side-image img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.side-image:hover img {
+  transform: scale(1.05);
+}
+
+/* ================= IMAGE OVERLAYS ================= */
+.image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  padding: 40px 10px 10px;
+  text-align: center;
+  color: white;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.image-overlay span {
+  font-size: 24px;
+  display: block;
+  margin-bottom: 4px;
+  animation: emojiBounce 2s ease-in-out infinite;
+}
+
+@keyframes emojiBounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-5px); }
+  60% { transform: translateY(-3px); }
+}
+
+
+
+/* ================= SPECIALITIES ================= */
+.specialities {
+  padding: 50px 20px; /* ⬅️ reduced */
+  text-align: center;
+  background: #ffffff;
+}
+
+.specialities p {
+  max-width: 700px;
+  margin: 0 auto;
+  color: #555;
+  font-size: 20px;
+}
+
+.speciality-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px; /* ⬅️ reduced */
+  margin-top: 30px;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.speciality-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 22px; /* ⬅️ reduced */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  animation: cardFadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.speciality-card:nth-child(1) { animation-delay: 0.1s; }
+.speciality-card:nth-child(2) { animation-delay: 0.2s; }
+.speciality-card:nth-child(3) { animation-delay: 0.3s; }
+.speciality-card:nth-child(4) { animation-delay: 0.4s; }
+.speciality-card:nth-child(5) { animation-delay: 0.5s; }
+.speciality-card:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes cardFadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.speciality-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(26, 167, 161, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.speciality-card:hover::before {
+  left: 100%;
+}
+
+.speciality-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.spec-emoji {
+  font-size: 30px;
+  margin-bottom: 8px;
+  transition: transform 0.3s ease;
+}
+
+.speciality-card:hover .spec-emoji {
+  transform: scale(1.2) rotate(5deg);
+}
+
+/* ================= WHY US ================= */
+/* ================= WHY US ================= */
+.why-us {
+  background: #f7fdfc;
+  padding: 60px 20px;        /* outer spacing */
+  text-align: center;
+}
+
+/* Heading */
+.why-us h2 {
+  font-size: 32px;
+  margin-bottom: 35px;      /* space below heading */
+  font-weight: 700;
+}
+
+/* Grid */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 30px;                /* space between cards */
+  max-width: 1100px;
+  margin: 0 auto;           /* center grid */
+}
+
+/* Cards */
+.why-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 28px 24px;       /* inner spacing */
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Hover effect */
+.why-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Emoji / Icon */
+.why-card .emoji,
+.why-card .spec-emoji {
+  font-size: 32px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+/* Card title */
+.why-card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+/* Card text */
+.why-card p {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .about-hero {
+    padding: 45px 20px;
+    min-height: 350px;
+  }
+
+  .about-hero h1 {
+    font-size: 38px;
+  }
+
+  .about-hero p {
+    max-width: 650px;
+    font-size: 17px;
+  }
+
+  .about-badge {
+    font-size: 13px;
+    padding: 5px 14px;
+  }
+
+  .about-clinic {
+    gap: 25px;
+    padding: 45px 20px;
+  }
+
+  .specialities {
+    padding: 45px 20px;
+  }
+
+  .speciality-grid {
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .speciality-card {
+    padding: 20px;
+  }
+
+  .why-us {
+    padding: 55px 20px;
+  }
+
+  .why-grid {
+    gap: 25px;
+  }
+
+  .why-card {
+    padding: 26px 22px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .why-us {
+    padding: 45px 20px;
+  }
+
+  .why-us h2 {
+    font-size: 26px;
+    margin-bottom: 28px;
+  }
+
+  .why-grid {
+    gap: 22px;
+  }
+
+  .why-card {
+    padding: 24px 20px;
+  }
+}
+
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .about-clinic {
+    grid-template-columns: 1fr;
+    padding: 40px 20px;
+  }
+
+  .about-hero {
+    padding: 40px 20px;
+    min-height: 350px;
+  }
+
+  /* Hide floating icons on mobile for better performance */
+  .hero-animations {
+    display: none;
+  }
+
+  .specialities,
+  .why-us {
+    padding: 40px 20px;
+  }
+
+  .about-visuals {
+    gap: 15px;
+  }
+
+  .side-images {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .side-image {
+    height: 100px;
+  }
+
+  .medical-elements {
+    width: 150px;
+    height: 150px;
+    top: -10px;
+    right: -10px;
+  }
+
+  .pulse-circle {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+  }
+
+  .rotating-cross {
+    font-size: 18px;
+    bottom: 15px;
+    right: 15px;
+  }
+
+  .speciality-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 18px;
+  }
+
+  .why-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-hero {
+    padding: 30px 15px;
+    min-height: 300px;
+  }
+
+  .about-badge {
+    font-size: 12px;
+    padding: 4px 12px;
+  }
+
+  .about-hero h1 {
+    font-size: 24px;
+  }
+
+  .about-hero p {
+    font-size: 14px;
+  }
+
+  .about-clinic {
+    padding: 30px 15px;
+    gap: 20px;
+  }
+
+  .about-text h2 {
+    font-size: 20px;
+  }
+
+  .side-images {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .medical-elements {
+    display: none; /* Hide floating elements on very small screens */
+  }
+
+  .speciality-card {
+    padding: 18px;
+  }
+
+  .spec-emoji {
+    font-size: 24px;
+  }
+
+  .why-card {
+    padding: 20px 16px;
+  }
+
+  .why-card h3 {
+    font-size: 16px;
+  }
+}

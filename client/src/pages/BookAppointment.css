@@ -1,0 +1,336 @@
+/* ================= MAIN CONTAINER ================= */
+.appointment-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 40px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(234, 247, 246, 0.95) 100%),
+    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="medical-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="%231aa7a1" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23medical-pattern)"/></svg>');
+  background-size: cover;
+  box-shadow: 0 20px 40px rgba(26, 167, 161, 0.15);
+  border-radius: 20px;
+  border: 1px solid rgba(26, 167, 161, 0.1);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.appointment-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #1aa7a1, #2dd4bf, #1aa7a1);
+  animation: gradientShift 3s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* ================= HEADER ================= */
+.appointment-container h1 {
+  color: #1aa7a1;
+  margin-bottom: 8px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  position: relative;
+}
+
+.appointment-container h1::after {
+  content: '🏥';
+  position: absolute;
+  right: -40px;
+  top: 0;
+  font-size: 1.5rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* ================= FORM STRUCTURE ================= */
+.appointment-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 30px;
+}
+
+.form-section {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid rgba(26, 167, 161, 0.1);
+  box-shadow: 0 8px 24px rgba(26, 167, 161, 0.05);
+  transition: all 0.3s ease;
+}
+
+.form-section:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(26, 167, 161, 0.1);
+}
+
+.form-section h3 {
+  color: #1aa7a1;
+  margin-bottom: 16px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.form-section h3::before {
+  content: '📋';
+  font-size: 1.2rem;
+}
+
+/* ================= FORM FIELDS ================= */
+.appointment-form input,
+.appointment-form select,
+.appointment-form textarea {
+  width: 100%;
+  padding: 16px 20px;
+  border: 2px solid rgba(26, 167, 161, 0.2);
+  border-radius: 12px;
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.appointment-form input:focus,
+.appointment-form select:focus,
+.appointment-form textarea:focus {
+  outline: none;
+  border-color: #1aa7a1;
+  box-shadow: 0 0 0 3px rgba(26, 167, 161, 0.1);
+  background: #ffffff;
+}
+
+.appointment-form textarea {
+  resize: vertical;
+  min-height: 100px;
+  grid-column: 1 / -1;
+}
+
+/* ================= TIME SELECTION ================= */
+.time-selection {
+  grid-column: 1 / -1;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid rgba(26, 167, 161, 0.1);
+  box-shadow: 0 8px 24px rgba(26, 167, 161, 0.05);
+}
+
+.select-time {
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #1aa7a1;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.select-time::before {
+  content: '🕒';
+  font-size: 1.2rem;
+}
+
+.time-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.slot {
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 2px solid rgba(26, 167, 161, 0.2);
+  font-weight: 600;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.9);
+  color: #374151;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.slot::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(26, 167, 161, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.slot:hover::before {
+  left: 100%;
+}
+
+.slot:hover {
+  border-color: #1aa7a1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(26, 167, 161, 0.15);
+}
+
+.slot.selected {
+  background: linear-gradient(135deg, #1aa7a1, #2dd4bf);
+  color: white;
+  border-color: #1aa7a1;
+  box-shadow: 0 4px 16px rgba(26, 167, 161, 0.3);
+}
+
+.slot.booked {
+  background: linear-gradient(135deg, #dc2626, #ef4444);
+  color: white;
+  border-color: #dc2626;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* ================= SUBMIT BUTTON ================= */
+.confirm-btn {
+  grid-column: 1 / -1;
+  padding: 18px 32px;
+  background: linear-gradient(135deg, #1aa7a1, #2dd4bf);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(26, 167, 161, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.confirm-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.confirm-btn:hover::before {
+  left: 100%;
+}
+
+.confirm-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(26, 167, 161, 0.4);
+}
+
+.confirm-btn:active {
+  transform: translateY(0);
+}
+
+/* ================= RESPONSIVE DESIGN ================= */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .appointment-container {
+    max-width: 700px;
+    padding: 32px;
+  }
+
+  .appointment-container h1 {
+    font-size: 2.2rem;
+  }
+
+  .appointment-form {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .time-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .appointment-container {
+    max-width: 95%;
+    margin: 20px auto;
+    padding: 24px;
+  }
+
+  .appointment-container h1 {
+    font-size: 1.8rem;
+  }
+
+  .appointment-container h1::after {
+    display: none;
+  }
+
+  .form-section {
+    padding: 20px;
+  }
+
+  .form-section h3 {
+    font-size: 1.1rem;
+  }
+
+  .appointment-form input,
+  .appointment-form select,
+  .appointment-form textarea {
+    padding: 14px 16px;
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+
+  .time-selection {
+    padding: 20px;
+  }
+
+  .time-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+  }
+
+  .slot {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  .confirm-btn {
+    padding: 16px 24px;
+    font-size: 16px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .appointment-container {
+    padding: 20px;
+  }
+
+  .appointment-container h1 {
+    font-size: 1.6rem;
+  }
+
+  .form-section {
+    padding: 16px;
+  }
+
+  .time-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .slot {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+}

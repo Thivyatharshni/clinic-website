@@ -1,0 +1,596 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* NAVBAR */
+.navbar {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 5000;
+  overflow: visible;
+  color: white;
+  min-height: 70px;
+  box-sizing: border-box;
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* LOGO */
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.clinic-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.logo-text h2 {
+  font-size: 22px;
+  color: white;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.logo-text small {
+  font-size: 12px;
+  color: #e6fffa;
+  display: block;
+  line-height: 1.2;
+}
+
+/* NAV LINKS */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 22px;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  flex: 1;
+  min-width: 0; /* Allow shrinking */
+}
+
+.nav-links li {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+}
+
+.nav-links a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* RIGHT ACTIONS */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+/* BUTTONS */
+.login-btn {
+  background: #15803d;
+  padding: 8px 16px;
+  border-radius: 6px;
+  color: white;
+  text-decoration: none;
+}
+
+.book-btn {
+  background: #16a34a;
+  padding: 9px 18px;
+  border-radius: 6px;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.logout-btn {
+  background: #dc2626;
+}
+
+/* PROFILE */
+.user-menu {
+  position: relative;
+}
+
+.user-name {
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.profile-icon-btn {
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: white;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.profile-icon-btn:hover {
+  background: rgba(255,255,255,0.25);
+}
+
+/* ================= USER DROPDOWN (FIXED) ================= */
+
+.user-dropdown {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  background: #ffffff;
+  min-width: 200px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  padding: 6px 0;
+  z-index: 9999;
+}
+
+/* Dropdown links */
+.user-dropdown a {
+  padding: 12px 18px;
+  font-size: 14px;
+  color: #333;
+  text-decoration: none;
+  display: block;
+  white-space: nowrap;        /* ✅ prevents text break */
+}
+
+.user-dropdown a:hover {
+  background: #f0fdfa;
+}
+
+/* Logout button */
+.user-dropdown button {
+  padding: 12px 18px;
+  font-size: 14px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  color: #dc2626;             /* 🔴 RED logout */
+  font-weight: 600;
+  border-top: 1px solid #eee; /* ✅ visual separation */
+}
+
+.user-dropdown button:hover {
+  background: #fee2e2;
+}
+
+
+/* HAMBURGER */
+.hamburger {
+  display: none;
+  font-size: 30px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  z-index: 6000;
+}
+
+/* TABLET */
+@media (max-width: 1200px) {
+  .navbar {
+    padding: 12px 16px;
+  }
+
+  .logo-text h2 {
+    font-size: 20px;
+  }
+
+  .logo-text small {
+    font-size: 11px;
+  }
+
+  .nav-links {
+    gap: 18px;
+  }
+
+  .nav-links a {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+
+  .nav-actions {
+    gap: 10px;
+  }
+
+  .book-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  .login-btn {
+    padding: 7px 14px;
+    font-size: 14px;
+  }
+
+  .user-name {
+    padding: 7px 10px;
+    font-size: 14px;
+  }
+
+  .profile-icon-btn {
+    padding: 7px;
+    font-size: 15px;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 1024px) {
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .hamburger {
+    display: block;
+    padding: 8px;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+  }
+
+  .hamburger:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .desktop-only {
+    display: none;
+  }
+
+  /* Hide horizontal nav links on mobile */
+  .nav-links {
+    display: none;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+    background: linear-gradient(135deg, #3aa89b 0%, #2d8a7d 100%);
+    backdrop-filter: blur(10px);
+    flex-direction: column;
+    align-items: stretch;
+    display: none;
+    padding: 80px 0 20px;
+    box-shadow: 2px 0 20px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    overflow-y: auto;
+    gap: 0;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links li {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 16px 30px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .nav-links a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    padding-left: 40px;
+    color: #ffffff;
+  }
+
+  .nav-links a::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 2px;
+    background: #ffffff;
+    transition: width 0.3s ease;
+  }
+
+  .nav-links a:hover::before {
+    width: 20px;
+  }
+
+  /* Mobile navbar adjustments */
+  .navbar {
+    padding: 10px 15px;
+    min-height: 55px;
+  }
+
+  .logo-section {
+    gap: 8px;
+  }
+
+  .clinic-logo {
+    width: 35px;
+    height: 35px;
+  }
+
+  .logo-text h2 {
+    font-size: 16px;
+  }
+
+  .logo-text small {
+    font-size: 10px;
+  }
+
+  .nav-actions {
+    gap: 8px;
+  }
+
+  .book-btn {
+    padding: 7px 12px;
+    font-size: 13px;
+  }
+
+  .login-btn {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+
+  .user-actions {
+    gap: 8px;
+  }
+
+  .user-name {
+    padding: 6px 8px;
+    font-size: 13px;
+  }
+
+  .profile-icon-btn {
+    padding: 6px;
+    font-size: 14px;
+  }
+}
+
+/* SMALL MOBILE */
+@media (max-width: 480px) {
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px;
+    min-height: 50px;
+  }
+
+  .logo-section {
+    gap: 6px;
+  }
+
+  .clinic-logo {
+    width: 30px;
+    height: 30px;
+  }
+
+  .logo-text h2 {
+    font-size: 14px;
+  }
+
+  .logo-text small {
+    font-size: 9px;
+  }
+
+  .hamburger {
+    padding: 6px;
+    font-size: 24px;
+  }
+
+  .nav-links {
+    width: 260px;
+    padding: 70px 0 20px;
+  }
+
+  .nav-links a {
+    padding: 14px 25px;
+    font-size: 15px;
+  }
+
+  .nav-links a:hover {
+    padding-left: 35px;
+  }
+
+  .nav-links a::before {
+    left: 18px;
+  }
+
+  .nav-actions {
+    gap: 6px;
+  }
+
+  .book-btn {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .login-btn {
+    padding: 5px 8px;
+    font-size: 12px;
+  }
+
+  .user-name {
+    padding: 5px 7px;
+    font-size: 12px;
+  }
+
+  .profile-icon-btn {
+    padding: 5px;
+    font-size: 13px;
+  }
+}
+
+/* Overlay for mobile menu */
+@media (max-width: 1024px) {
+  .nav-links.open::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 280px;
+    width: calc(100% - 280px);
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9998;
+  }
+}
+
+
+.user-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.user-notification {
+  position: relative;
+}
+
+.bell-icon {
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+}
+
+.notif-count {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: red;
+  color: white;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+/* ================= NOTIFICATION DROPDOWN ================= */
+
+.notif-dropdown {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  min-width: 280px;
+  max-width: 320px;
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #e5e7eb;
+  z-index: 9999;
+}
+
+/* Title */
+.notif-dropdown h4 {
+  margin: 0;
+  padding: 16px 20px 12px;
+  border-bottom: 1px solid #f3f4f6;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* No notifications message */
+.notif-dropdown p {
+  padding: 20px;
+  margin: 0;
+  text-align: center;
+  color: #6b7280;
+  font-style: italic;
+}
+
+/* Notification items */
+.notif-item {
+  padding: 16px 20px;
+  border-bottom: 1px solid #f3f4f6;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.notif-item:hover {
+  background: #f8fafc;
+}
+
+.notif-item:last-child {
+  border-bottom: none;
+}
+
+/* Appointment service name */
+.notif-item strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  color: #0f766e;
+  margin-bottom: 6px;
+}
+
+/* Status message */
+.notif-item span {
+  display: block;
+  font-size: 14px;
+  color: #374151;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+/* Date and time */
+.notif-item small {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* Status-specific styling */
+.notif-item.approved .notif-item span {
+  color: #16a34a;
+}
+
+.notif-item.rejected .notif-item span {
+  color: #dc2626;
+}

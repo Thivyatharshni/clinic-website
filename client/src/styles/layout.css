@@ -1,0 +1,55 @@
+/* ================= GLOBAL LAYOUT SYSTEM ================= */
+
+/* Shared container for all pages */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Page wrapper */
+.page {
+  padding: 60px 0;
+}
+
+/* Section spacing (no horizontal padding here) */
+section {
+  padding: 60px 0;
+}
+
+/* Light background section */
+.section-light {
+  background: #f9fbfb;
+}
+
+/* Utility alignment helpers */
+.center {
+  text-align: center;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Responsive spacing */
+@media (max-width: 1024px) {
+  .page {
+    padding: 50px 0;
+  }
+
+  section {
+    padding: 50px 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .page {
+    padding: 40px 0;
+  }
+
+  section {
+    padding: 40px 0;
+  }
+}

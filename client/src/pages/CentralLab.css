@@ -1,0 +1,267 @@
+/* ================= GLOBAL ================= */
+.central-lab-page {
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* ================= HERO ================= */
+.lab-hero {
+  text-align: center;
+  padding: 50px 20px 35px;   /* ⬅️ reduced */
+  background: linear-gradient(135deg, #eaf7f6, #ffffff);
+}
+
+.lab-badge {
+  background: #e6f7f5;
+  color: #0d9488;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.lab-hero h1 {
+  font-size: 36px;           /* ⬅️ slightly reduced */
+  margin: 14px 0 8px;
+}
+
+.lab-hero h1 span {
+  color: #0d9488;
+}
+
+.lab-hero p {
+  max-width: 620px;
+  margin: 0 auto 28px;       /* ⬅️ reduced */
+  color: #555;
+  line-height: 1.6;
+}
+
+/* ================= FEATURES ================= */
+.lab-feature-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 22px;                 /* ⬅️ reduced */
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.lab-feature {
+  text-align: center;
+  padding: 10px;
+}
+
+.lab-feature h4 {
+  margin: 8px 0 4px;
+  font-size: 16px;
+}
+
+/* ================= SECTIONS ================= */
+.lab-section {
+  padding: 45px 20px;        /* ⬅️ reduced from 55 */
+  text-align: center;
+}
+
+.light-bg {
+  background: #f9fafb;
+}
+
+.section-subtitle {
+  color: #666;
+  margin-bottom: 26px;       /* ⬅️ reduced */
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ================= PACKAGES ================= */
+.package-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 22px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.package-card {
+  background: white;
+  padding: 22px;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.package-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+}
+
+.package-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 14px 0;
+  text-align: left;
+}
+
+.package-card li {
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #444;
+  line-height: 1.4;
+  padding-left: 2px;
+}
+
+/* Ensure consistent card content alignment */
+.package-card h3 {
+  margin: 8px 0 4px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a365d;
+}
+
+.package-card h4 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0d9488;
+  margin: 8px 0 12px 0;
+}
+
+/* Button alignment */
+.package-card button {
+  width: 100%;
+  margin-top: 16px;
+  padding: 14px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+  text-align: center;
+  box-sizing: border-box;
+  min-height: 48px;
+}
+
+.package-card .btn-primary {
+  background: #0d9488;
+  color: white;
+  border: 2px solid #0d9488;
+}
+
+.package-card .btn-primary:hover {
+  background: #0a7a6f;
+  border-color: #0a7a6f;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.3);
+}
+
+.package-card .btn-outline {
+  background: white;
+  color: #0d9488;
+  border: 2px solid #0d9488;
+}
+
+.package-card .btn-outline:hover {
+  background: #0d9488;
+  color: white;
+  border-color: #0d9488;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.3);
+}
+
+.highlight {
+  border: 2px solid #0d9488;
+}
+
+.tag {
+  background: #0d9488;
+  color: white;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+/* ================= TESTS ================= */
+.test-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+.test-card {
+  background: white;
+  padding: 22px;
+  border-radius: 14px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.test-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.1);
+  color: #0d9488;
+}
+
+/* ================= CTA ================= */
+.lab-cta {
+  background: #e6f7f5;
+  padding: 45px 20px;        /* ⬅️ reduced */
+  text-align: center;
+}
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+/* ================= BUTTONS ================= */
+.btn-primary {
+  background: #0d9488;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn-outline {
+  border: 2px solid #0d9488;
+  color: #0d9488;
+  padding: 12px 24px;
+  border-radius: 8px;
+  background: white;
+  font-weight: 600;
+}
+
+.btn-call {
+  background: #16a34a;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .lab-hero {
+    padding: 40px 20px 30px;
+  }
+
+  .lab-section {
+    padding: 40px 20px;
+  }
+
+  .lab-cta {
+    padding: 40px 20px;
+  }
+}
