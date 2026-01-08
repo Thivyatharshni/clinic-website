@@ -73,9 +73,26 @@ body {
   color: var(--gray-800);
   background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
   min-height: 100vh;
+  min-height: 100dvh; /* Dynamic viewport height for mobile */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  /* Prevent horizontal scroll on mobile */
+  max-width: 100vw;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* Mobile viewport fixes */
+@media (max-width: 768px) {
+  body {
+    /* Use dynamic viewport units where supported */
+    min-height: 100dvh;
+    /* Better text rendering on mobile */
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
 }
 
 /* Modern Scrollbar */

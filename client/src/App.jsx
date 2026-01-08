@@ -1,4 +1,5 @@
 import { Routes, Route, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import Register from "./pages/Register";
 import Navbar from "./components/Navbar";
 import FloatingActions from "./components/FloatingActions";
@@ -8,6 +9,7 @@ import AppointmentHistory from "./pages/AppointmentHistory";
 import UserRoute from "./components/UserRoute";
 import "./styles/layout.css";
 import Payment from "./pages/Payment";
+import { warmUpServer, isProduction } from "./api";
 
 /* EXISTING PAGES */
 import Home from "./pages/Home";
@@ -37,6 +39,29 @@ function App() {
   // Check if user is logged in for AI Assistant
   const user = JSON.parse(localStorage.getItem("user"));
   const showAIAssistant = user && !isAdminRoute;
+
+  // 🚀 Warm up Render backend to prevent cold starts
+  useEffect(() => {
+    const warmUpBackend = async () => {
+      if (isProduction()) {
+        try {
+          console.log('🌡️ Warming up backend server...');
+          await warmUpServer();
+          console.log('✅ Backend is ready');
+        } catch (error) {
+          console.log('⚠️ Backend warm-up completed (may still be starting)');
+        }
+      }
+    };
+
+    // Warm up immediately and then every 10 minutes in production
+    warmUpBackend();
+
+    if (isProduction()) {
+      const interval = setInterval(warmUpBackend, 10 * 60 * 1000); // 10 minutes
+      return () => clearInterval(interval);
+    }
+  }, []);
 
   return (
     <>

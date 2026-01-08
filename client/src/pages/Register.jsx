@@ -24,28 +24,97 @@ export default function Register() {
     e.preventDefault();
     setError("");
 
+    // Frontend validation matching backend rules
     if (!form.name || !form.email || !form.phone || !form.password) {
       setError("All fields are required");
       return;
     }
 
+    // Validate name length
+    if (form.name.trim().length < 2) {
+      setError("Name must be at least 2 characters long");
+      return;
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(form.email)) {
+      setError("Please enter a valid email address");
+      return;
+    }
+
+    // Validate password length
+    if (form.password.length < 6) {
+      setError("Password must be at least 6 characters long");
+      return;
+    }
+
+    // Validate phone number (basic check)
+    const phoneRegex = /^\+?[\d\s\-\(\)]{10,}$/;
+    const cleanPhone = form.phone.replace(/\D/g, '');
+    if (!phoneRegex.test(form.phone) || cleanPhone.length < 10) {
+      setError("Please enter a valid phone number (at least 10 digits)");
+      return;
+    }
+
+    // Create AbortController for timeout handling (mobile-friendly)
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
+
     try {
-      const res = await fetch("http://localhost:5000/api/auth/register", {
+      const apiUrl = process.env.REACT_APP_API_URL;
+      const res = await fetch(`${apiUrl}/api/auth/register`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        headers: {
+          "Content-Type": "application/json",
+          // Ensure proper headers for mobile browsers
+          "Accept": "application/json",
+          "User-Agent": navigator.userAgent, // Include user agent for debugging
+        },
+        // Ensure proper request configuration for mobile
+        mode: "cors",
+        cache: "no-cache",
+        credentials: "omit", // Avoid CORS issues with credentials on mobile
+        signal: controller.signal, // Add timeout support
+        body: JSON.stringify({
+          name: form.name.trim(),
+          email: form.email.toLowerCase(),
+          phone: form.phone.trim(),
+          password: form.password,
+        }),
       });
+
+      clearTimeout(timeoutId);
+
+      // Check if response is valid JSON before parsing
+      const contentType = res.headers.get("content-type");
+      if (!contentType || !contentType.includes("application/json")) {
+        throw new Error("Server returned invalid response format");
+      }
 
       const data = await res.json();
 
       if (!res.ok) {
-        setError(data.message || "Registration failed");
+        // Show specific backend error messages
+        setError(data.message || data.error || `Registration failed (${res.status}: ${res.statusText})`);
         return;
       }
 
       navigate("/login");
     } catch (err) {
-      setError("Server error");
+      clearTimeout(timeoutId);
+      console.error("Registration error:", err);
+
+      // More specific error messages for different failure types
+      if (err.name === 'AbortError') {
+        setError("Request timed out. Please check your internet connection and try again.");
+      } else if (err.name === 'TypeError' && err.message.includes('fetch')) {
+        setError("Network error: Unable to connect to server. Please check your internet connection and try again.");
+      } else if (err.message.includes('invalid response format')) {
+        setError("Server communication error. Please try again later.");
+      } else {
+        setError(`Registration failed: ${err.message || "Please try again later"}`);
+      }
     }
   };
 

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash, FaUserShield } from "react-icons/fa";
+import api from "../api";
 import "./AdminLogin.css";
 
 export default function AdminLogin() {
@@ -27,10 +28,7 @@ export default function AdminLogin() {
     setLoading(true);
 
     try {
-      const res = await axios.post(
-        "http://localhost:5000/api/admin/login",
-        { email, password }
-      );
+      const res = await api.post("/api/admin/login", { email, password });
 
       // ✅ Save admin token
       localStorage.setItem("adminToken", res.data.token);
@@ -38,7 +36,10 @@ export default function AdminLogin() {
       // ✅ Direct redirect
       navigate("/admin/dashboard");
     } catch (err) {
-      setError(err.response?.data?.message || "Admin login failed");
+      console.error("Admin login error:", err);
+      // Improved error handling - show actual backend error message
+      const errorMessage = err.response?.data?.message || err.response?.data?.error || err.message;
+      setError(`Admin login failed: ${errorMessage || "Please try again"}`);
     } finally {
       setLoading(false);
     }

@@ -5,11 +5,13 @@
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 20px;
+  box-sizing: border-box;
 }
 
 /* Page wrapper */
 .page {
   padding: 60px 0;
+  min-height: calc(100vh - 70px); /* Account for navbar height */
 }
 
 /* Section spacing (no horizontal padding here) */
@@ -33,6 +35,53 @@ section {
   align-items: center;
 }
 
+/* Grid utilities */
+.grid-auto-fit {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.grid-auto-fill {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* Flex utilities */
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.gap-1 { gap: 0.25rem; }
+.gap-2 { gap: 0.5rem; }
+.gap-3 { gap: 0.75rem; }
+.gap-4 { gap: 1rem; }
+.gap-5 { gap: 1.25rem; }
+.gap-6 { gap: 1.5rem; }
+
 /* Responsive spacing */
 @media (max-width: 1024px) {
   .page {
@@ -42,14 +91,42 @@ section {
   section {
     padding: 50px 0;
   }
+
+  .container {
+    padding: 0 16px;
+  }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .page {
     padding: 40px 0;
   }
 
   section {
     padding: 40px 0;
+  }
+
+  .container {
+    padding: 0 12px;
+  }
+
+  .grid-auto-fit,
+  .grid-auto-fill {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 30px 0;
+  }
+
+  section {
+    padding: 30px 0;
+  }
+
+  .container {
+    padding: 0 8px;
   }
 }

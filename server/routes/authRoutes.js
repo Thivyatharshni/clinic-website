@@ -10,15 +10,45 @@ router.post("/register", async (req, res) => {
   try {
     const { name, email, phone, password } = req.body;
 
-    // 🔴 VALIDATION
+    // 🔴 BASIC VALIDATION
     if (!name || !email || !phone || !password) {
       return res.status(400).json({
         message: "All fields (name, email, phone, password) are required",
       });
     }
 
+    // 🔴 VALIDATE EMAIL FORMAT
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({
+        message: "Please enter a valid email address",
+      });
+    }
+
+    // 🔴 VALIDATE PASSWORD STRENGTH
+    if (password.length < 6) {
+      return res.status(400).json({
+        message: "Password must be at least 6 characters long",
+      });
+    }
+
+    // 🔴 VALIDATE PHONE NUMBER (basic check for digits and length)
+    const phoneRegex = /^\+?[\d\s\-\(\)]{10,}$/;
+    if (!phoneRegex.test(phone) || phone.replace(/\D/g, '').length < 10) {
+      return res.status(400).json({
+        message: "Please enter a valid phone number (at least 10 digits)",
+      });
+    }
+
+    // 🔴 VALIDATE NAME LENGTH
+    if (name.trim().length < 2) {
+      return res.status(400).json({
+        message: "Name must be at least 2 characters long",
+      });
+    }
+
     // 🔴 CHECK EXISTING USER
-    const exists = await User.findOne({ email });
+    const exists = await User.findOne({ email: email.toLowerCase() });
     if (exists) {
       return res.status(400).json({ message: "Email already registered" });
     }
@@ -28,9 +58,9 @@ router.post("/register", async (req, res) => {
 
     // ✅ CREATE USER
     const user = new User({
-      name,
-      email,
-      phone,
+      name: name.trim(),
+      email: email.toLowerCase(),
+      phone: phone.trim(),
       password: hashedPassword,
     });
 
@@ -38,10 +68,50 @@ router.post("/register", async (req, res) => {
 
     res.status(201).json({
       message: "Registration successful",
+      success: true
     });
   } catch (error) {
     console.error("Register Error:", error);
-    res.status(500).json({ message: "Server error" });
+    console.error("Error details:", {
+      name: error.name,
+      message: error.message,
+      code: error.code,
+      stack: error.stack
+    });
+
+    // Handle MongoDB validation errors
+    if (error.name === 'ValidationError') {
+      const messages = Object.values(error.errors).map(err => err.message);
+      return res.status(400).json({
+        message: messages.join(', '),
+        error: 'ValidationError',
+        success: false
+      });
+    }
+
+    // Handle duplicate key errors
+    if (error.code === 11000) {
+      return res.status(400).json({
+        message: "Email already registered",
+        error: 'DuplicateError',
+        success: false
+      });
+    }
+
+    // Handle other specific errors
+    if (error.name === 'CastError') {
+      return res.status(400).json({
+        message: "Invalid data format provided",
+        error: 'CastError',
+        success: false
+      });
+    }
+
+    res.status(500).json({
+      message: "Server error during registration",
+      error: process.env.NODE_ENV === 'development' ? error.message : 'Internal server error',
+      success: false
+    });
   }
 });
 

@@ -3,10 +3,15 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
-  z-index: 9999;
+  z-index: 1000; /* Lower z-index to avoid overlapping with modals/dropdowns */
   display: flex;
   flex-direction: column;
   gap: 12px;
+  pointer-events: none; /* Allow clicks to pass through to underlying elements */
+}
+
+.floating-actions > * {
+  pointer-events: auto; /* Re-enable pointer events for the buttons themselves */
 }
 
 /* Common button */
@@ -93,8 +98,32 @@
   }
 }
 
-/* Mobile size */
-@media (max-width: 600px) {
+/* Mobile positioning and spacing */
+@media (max-width: 768px) {
+  .floating-actions {
+    bottom: 100px; /* Increased bottom spacing to avoid mobile browser UI */
+    right: 16px; /* Slightly less right margin on mobile */
+    z-index: 1000; /* Keep below modals but above content */
+  }
+
+  .floating-btn {
+    width: 50px;
+    height: 50px;
+  }
+
+  .floating-btn.whatsapp img {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .floating-actions {
+    bottom: 90px; /* Extra spacing for small screens */
+    right: 12px;
+  }
+
   .floating-btn {
     width: 48px;
     height: 48px;
@@ -103,5 +132,36 @@
   .floating-btn.whatsapp img {
     width: 24px;
     height: 24px;
+  }
+}
+
+/* Extra small screens (avoid notch area on some devices) */
+@media (max-width: 360px) {
+  .floating-actions {
+    bottom: 85px;
+    right: 10px;
+  }
+
+  .floating-btn {
+    width: 44px;
+    height: 44px;
+  }
+
+  .floating-btn.whatsapp img {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+/* Pages with bottom CTA buttons - adjust positioning */
+.page-with-bottom-cta .floating-actions,
+.home .floating-actions {
+  bottom: 120px; /* Extra spacing when there are CTA buttons below */
+}
+
+/* Landscape orientation on mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .floating-actions {
+    bottom: 70px; /* Less bottom spacing in landscape */
   }
 }

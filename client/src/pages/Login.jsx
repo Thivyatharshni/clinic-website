@@ -27,8 +27,10 @@ export default function Login() {
     setLoading(true);
 
     try {
+      const apiUrl = process.env.REACT_APP_API_URL;
+
       /* 🔹 1. TRY ADMIN LOGIN FIRST */
-      let res = await fetch("http://localhost:5000/api/admin/login", {
+      let res = await fetch(`${apiUrl}/api/admin/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
@@ -43,7 +45,7 @@ export default function Login() {
       }
 
       /* 🔹 2. TRY USER LOGIN */
-      res = await fetch("http://localhost:5000/api/auth/login", {
+      res = await fetch(`${apiUrl}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
@@ -52,7 +54,8 @@ export default function Login() {
       data = await res.json();
 
       if (!res.ok) {
-        setError(data.message || "Invalid login");
+        // Improved error handling - show actual backend error message
+        setError(data.message || data.error || `Login failed (${res.status})`);
         return;
       }
 
@@ -74,8 +77,13 @@ export default function Login() {
       }
 
     } catch (err) {
-      console.error(err);
-      setError("Server error");
+      console.error("Login error:", err);
+      // More specific error messages for different failure types
+      if (err.name === 'TypeError' && err.message.includes('fetch')) {
+        setError("Network error: Unable to connect to server. Please check your internet connection.");
+      } else {
+        setError(`Server error: ${err.message || "Please try again later"}`);
+      }
     } finally {
       setLoading(false);
     }
