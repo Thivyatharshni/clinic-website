@@ -50,7 +50,7 @@ export default function Register() {
     }
 
     // Validate phone number (basic check)
-    const phoneRegex = /^\+?[\d\s\-\(\)]{10,}$/;
+    const phoneRegex = /^\+?[\d\s\-()]{10,}$/;
     const cleanPhone = form.phone.replace(/\D/g, '');
     if (!phoneRegex.test(form.phone) || cleanPhone.length < 10) {
       setError("Please enter a valid phone number (at least 10 digits)");
