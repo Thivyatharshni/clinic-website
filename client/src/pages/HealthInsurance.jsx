@@ -25,7 +25,7 @@ export default function HealthInsurance() {
   const handlePartnerClick = (partnerName) => {
     const message = `Hi, I'm interested in ${partnerName} health insurance plans.`;
     const whatsappUrl = `https://api.whatsapp.com/send?phone=916383485665&text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');n
+    window.open(whatsappUrl, '_blank');
   };
 
   const plans = [
