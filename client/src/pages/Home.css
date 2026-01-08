@@ -464,11 +464,12 @@
 /* Mobile */
 @media (max-width: 768px) {
   .home-hero {
-    height: 65vh;
+    height: auto;
     display: flex;
     align-items: flex-start;
     justify-content: center;
     padding-top: 60px;
+    padding-bottom: 40px;
   }
 
   .hero-content {
@@ -501,9 +502,11 @@
     padding: 16px 12px;
     margin: 18px auto;
     max-width: 300px;
+    width: 100%;
   }
 
   .stat-item {
+    width: 100%;
     min-width: auto;
     padding: 12px 8px;
   }
