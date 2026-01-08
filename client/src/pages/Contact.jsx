@@ -221,11 +221,11 @@ export default function Contact() {
             <div className="info-card">
               <div className="card-icon">🌐</div>
               <h3>Follow Us</h3>
-              <div className="social-links">
-                <a href="javascript:void(0)" className="social-link">📘 Facebook</a>
-                <a href="javascript:void(0)" className="social-link">📷 Instagram</a>
-                <a href="javascript:void(0)" className="social-link">🐦 Twitter</a>
-              </div>
+            <div className="social-links">
+              <button type="button" className="social-link">📘 Facebook</button>
+              <button type="button" className="social-link">📷 Instagram</button>
+              <button type="button" className="social-link">🐦 Twitter</button>
+            </div>
             </div>
           </div>
 
