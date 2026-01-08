@@ -464,7 +464,7 @@
 /* Mobile */
 @media (max-width: 768px) {
   .home-hero {
-    height: auto;
+    height: auto !important;  /* Override base 100vh */
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -565,8 +565,9 @@
 /* Small Mobile */
 @media (max-width: 480px) {
   .home-hero {
-    height: 55vh;
+    height: auto !important;
     padding-top: 40px;
+    padding-bottom: 20px;
   }
 
   .hero-content {
