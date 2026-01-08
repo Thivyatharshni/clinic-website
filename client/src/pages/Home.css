@@ -34,13 +34,14 @@
   filter: blur(0.5px);
 }
 
-
+/* ================= HERO CONTENT ================= */
 .hero-content {
   max-width: 900px;
   margin: 0 auto;
   text-align: center;
   position: relative;
-  z-index: 2; /* ensures text is above image */
+  z-index: 2;
+  padding: 20px;
 }
 
 /* ================= BADGE ================= */
@@ -64,7 +65,6 @@
 
 .hero-content h1 span {
   color: #1aa7a1;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 /* ================= PARAGRAPH ================= */
@@ -74,7 +74,6 @@
   color: #f8f9fa;
   line-height: 1.6;
   font-size: 20px;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
 }
 
 /* ================= HERO STATS ================= */
@@ -84,7 +83,6 @@
   margin: 22px auto;
   padding: 16px 26px;
 
-  /* ✨ glass effect for readability */
   background: rgba(255, 255, 255, 0.75);
   border-radius: 14px;
   backdrop-filter: blur(6px);
@@ -147,6 +145,37 @@
   margin-top: 16px;
   color: #1aa7a1;
   font-weight: 600;
+}
+
+/* ================= MOBILE FIX (IMPORTANT) ================= */
+@media (max-width: 768px) {
+
+  .home-hero {
+    height: auto;            /* 🔑 prevents overlap */
+    padding: 80px 0 40px;
+  }
+
+  .hero-content h1 {
+    font-size: 28px;
+  }
+
+  .hero-content p {
+    font-size: 16px;
+  }
+
+  .hero-stats {
+    flex-direction: column;  /* 🔑 stack stats */
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .stat-item {
+    min-width: 100%;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
 }
 
 /* ================= SECTIONS ================= */
