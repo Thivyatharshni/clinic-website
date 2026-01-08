@@ -11,7 +11,13 @@ connectDB();
 const app = express();
 
 /* 🔥 IMPORTANT MIDDLEWARE */
-app.use(cors());              // ← THIS FIXES YOUR ISSUE
+app.use(
+  cors({
+    origin: "https://webapplicationclinic.netlify.app",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 /* ROUTES */
