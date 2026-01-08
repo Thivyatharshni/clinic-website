@@ -4,7 +4,6 @@ export default function LogoLink({ onAdminDashboardClick }) {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const userToken = localStorage.getItem("user");
   const adminToken = localStorage.getItem("adminToken");
 
   // If admin token exists, navigate to admin dashboard

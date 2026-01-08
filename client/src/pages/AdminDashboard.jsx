@@ -21,7 +21,7 @@ export default function AdminDashboard() {
   const [adminProfile, setAdminProfile] = useState(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('dashboard');
-  const [showNotifications, setShowNotifications] = useState(false);
+
   const [highlightedAppointment, setHighlightedAppointment] = useState(null);
   const [clinicSettings, setClinicSettings] = useState({
     clinicName: '',
@@ -123,7 +123,7 @@ export default function AdminDashboard() {
     setSettingsLoading(true);
 
     try {
-      const res = await axios.put(
+      await axios.put(
         "http://localhost:5000/api/clinic-settings",
         clinicSettings,
         {

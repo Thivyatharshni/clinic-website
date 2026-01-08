@@ -222,9 +222,9 @@ export default function Contact() {
               <div className="card-icon">🌐</div>
               <h3>Follow Us</h3>
               <div className="social-links">
-                <a href="#" className="social-link">📘 Facebook</a>
-                <a href="#" className="social-link">📷 Instagram</a>
-                <a href="#" className="social-link">🐦 Twitter</a>
+                <a href="javascript:void(0)" className="social-link">📘 Facebook</a>
+                <a href="javascript:void(0)" className="social-link">📷 Instagram</a>
+                <a href="javascript:void(0)" className="social-link">🐦 Twitter</a>
               </div>
             </div>
           </div>
