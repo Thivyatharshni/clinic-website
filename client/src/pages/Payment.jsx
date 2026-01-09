@@ -1,5 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import api from "../api";
 import "./Payment.css";
 
 export default function Payment() {
@@ -32,30 +33,31 @@ export default function Payment() {
           paymentId: "PAY" + Date.now(),
         };
 
-        const res = await fetch(
-          "http://localhost:5000/api/appointments",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${
-                JSON.parse(localStorage.getItem("user"))?.token
-              }`,
-            },
-            body: JSON.stringify(paymentPayload),
-          }
-        );
+        const res = await api.post("/appointments", paymentPayload);
 
-        if (!res.ok) {
-          throw new Error("Appointment booking failed");
-        }
+        console.log("Appointment created:", res.data);
 
         // payment + booking success
         navigate("/appointments", {
           state: { success: "Appointment booked successfully!" },
         });
       } catch (err) {
-        setError("Payment failed. Please try again.");
+        console.error("Payment error:", err);
+        console.error("Error response:", err.response?.data);
+        console.error("Error status:", err.response?.status);
+
+        // More specific error messages
+        if (err.response?.status === 400) {
+          setError("Payment verification failed. Please contact support.");
+        } else if (err.response?.status === 401) {
+          setError("Authentication failed. Please login again.");
+        } else if (err.response?.status >= 500) {
+          setError("Server error. Please try again later.");
+        } else if (err.code === 'ECONNABORTED') {
+          setError("Request timed out. Please check your connection.");
+        } else {
+          setError("Payment failed. Please try again.");
+        }
       } finally {
         setLoading(false);
       }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import api from "../api";
 import "./BookAppointment.css";
 
 const TIME_SLOTS = [
@@ -37,9 +38,8 @@ export default function BookAppointment() {
   useEffect(() => {
     if (!formData.date) return;
 
-    fetch(`http://localhost:5000/api/appointments/slots/${formData.date}`)
-      .then((res) => res.json())
-      .then((data) => setBookedSlots(data))
+    api.get(`/appointments/slots/${formData.date}`)
+      .then((res) => setBookedSlots(res.data))
       .catch(() => setBookedSlots([]));
   }, [formData.date]);
 
