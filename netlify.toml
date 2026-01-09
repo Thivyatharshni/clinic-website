@@ -21,6 +21,10 @@
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+    # Mobile optimization headers
+    X-UA-Compatible = "IE=edge"
+    # Prevent mobile browsers from auto-detecting phone numbers
+    format-detection = "telephone=no"
 
 # Cache static assets
 [[headers]]

@@ -65,7 +65,7 @@ export default function Payment() {
   };
 
   return (
-    <div className="payment-page">
+    <div className="payment-page page-with-bottom-cta">
       <div className="payment-card">
         <h2>Payment</h2>
 
