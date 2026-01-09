@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import api from "../api";
 import "./AIAssistant.css";
 
 const AIAssistant = () => {
@@ -35,14 +36,7 @@ const AIAssistant = () => {
         return "Authentication token not found. Please log in again.";
       }
 
-      const response = await fetch("http://localhost:5000/api/ai/chat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ message: userMessage }),
-      });
+      const response = await api.post("/ai/chat", { message: userMessage });
 
       if (!response.ok) {
         if (response.status === 401) {

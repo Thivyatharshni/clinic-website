@@ -74,16 +74,7 @@ export default function AdminDashboard() {
   /* ================= FETCH ADMIN PROFILE ================= */
   const fetchAdminProfile = async () => {
     try {
-      const res = await axios.get(
-        "http://localhost:5000/api/admin/profile",
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem(
-              "adminToken"
-            )}`,
-          },
-        }
-      );
+      const res = await api.get("/admin/profile");
       setAdminProfile(res.data);
     } catch (err) {
       console.error("Failed to fetch admin profile:", err);
@@ -93,16 +84,7 @@ export default function AdminDashboard() {
   /* ================= FETCH CLINIC SETTINGS ================= */
   const fetchClinicSettings = async () => {
     try {
-      const res = await axios.get(
-        "http://localhost:5000/api/clinic-settings",
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem(
-              "adminToken"
-            )}`,
-          },
-        }
-      );
+      const res = await api.get("/clinic-settings");
       setClinicSettings(res.data);
     } catch (err) {
       console.error("Failed to fetch clinic settings:", err);
@@ -115,17 +97,7 @@ export default function AdminDashboard() {
     setSettingsLoading(true);
 
     try {
-      await axios.put(
-        "http://localhost:5000/api/clinic-settings",
-        clinicSettings,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem(
-              "adminToken"
-            )}`,
-          },
-        }
-      );
+      await api.put("/clinic-settings", clinicSettings);
       alert("Clinic settings updated successfully!");
       fetchClinicSettings(); // Refresh the data
     } catch (err) {
@@ -148,17 +120,7 @@ export default function AdminDashboard() {
   /* ================= UPDATE STATUS ================= */
   const updateStatus = async (id, status) => {
     try {
-      await axios.put(
-        `http://localhost:5000/api/admin/appointments/${id}/status`,
-        { status, isNew: false },
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem(
-              "adminToken"
-            )}`,
-          },
-        }
-      );
+      await api.put(`/admin/appointments/${id}/status`, { status, isNew: false });
       fetchAppointments();
     } catch (err) {
       console.error(err);
