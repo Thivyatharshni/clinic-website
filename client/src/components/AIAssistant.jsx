@@ -109,7 +109,7 @@ const AIAssistant = () => {
   return (
     <>
       {/* Floating AI Button */}
-      <div className="ai-floating-button" onClick={() => setIsOpen(!isOpen)}>
+      <div className="medibot-icon ai-floating-button" onClick={() => setIsOpen(!isOpen)}>
         <div className="ai-icon">🤖</div>
         <div className="ai-pulse"></div>
       </div>

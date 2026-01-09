@@ -1,167 +1,28 @@
-/* Floating container */
-.floating-actions {
+/* Floating Action Buttons */
+
+.whatsapp-icon {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  z-index: 9998;
+}
+
+.medibot-icon {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  z-index: 1000; /* High z-index to ensure visibility above other elements */
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  pointer-events: none; /* Allow clicks to pass through to underlying elements */
+  z-index: 9999;
 }
 
-.floating-actions > * {
-  pointer-events: auto; /* Re-enable pointer events for the buttons themselves */
-}
-
-/* Common button */
-.floating-btn {
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
-  text-decoration: none;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.floating-btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s ease;
-}
-
-.floating-btn:hover::before {
-  left: 100%;
-}
-
-/* Hover effects */
-.floating-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-}
-
-/* WhatsApp button with reactive effects */
-.floating-btn.whatsapp {
-  background: linear-gradient(135deg, #25d366, #20b954);
-  position: relative;
-}
-
-.floating-btn.whatsapp::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background: rgba(37, 211, 102, 0.3);
-  animation: whatsappPulse 2s ease-in-out infinite;
-  z-index: -1;
-}
-
-.floating-btn.whatsapp img {
-  width: 28px;
-  height: 28px;
-  animation: whatsappBounce 2s ease-in-out infinite;
-  position: relative;
-  z-index: 1;
-}
-
-@keyframes whatsappPulse {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1.4);
-    opacity: 0;
-  }
-}
-
-@keyframes whatsappBounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-3px);
-  }
-  60% {
-    transform: translateY(-2px);
-  }
-}
-
-/* Mobile positioning and spacing */
+/* Mobile optimization */
 @media (max-width: 768px) {
-  .floating-actions {
-    bottom: 100px; /* Increased bottom spacing to avoid mobile browser UI */
-    right: 16px; /* Slightly less right margin on mobile */
-    z-index: 1000; /* Maintain high z-index on mobile */
+  .whatsapp-icon {
+    bottom: 90px;
+    right: 16px;
   }
 
-  .floating-btn {
-    width: 50px;
-    height: 50px;
-  }
-
-  .floating-btn.whatsapp img {
-    width: 26px;
-    height: 26px;
-  }
-}
-
-/* Small mobile devices */
-@media (max-width: 480px) {
-  .floating-actions {
-    bottom: 90px; /* Extra spacing for small screens */
-    right: 12px;
-  }
-
-  .floating-btn {
-    width: 48px;
-    height: 48px;
-  }
-
-  .floating-btn.whatsapp img {
-    width: 24px;
-    height: 24px;
-  }
-}
-
-/* Extra small screens (avoid notch area on some devices) */
-@media (max-width: 360px) {
-  .floating-actions {
-    bottom: 85px;
-    right: 10px;
-  }
-
-  .floating-btn {
-    width: 44px;
-    height: 44px;
-  }
-
-  .floating-btn.whatsapp img {
-    width: 22px;
-    height: 22px;
-  }
-}
-
-/* Pages with bottom CTA buttons - adjust positioning */
-.page-with-bottom-cta .floating-actions,
-.home .floating-actions {
-  bottom: 120px; /* Extra spacing when there are CTA buttons below */
-}
-
-/* Landscape orientation on mobile */
-@media (max-width: 768px) and (orientation: landscape) {
-  .floating-actions {
-    bottom: 70px; /* Less bottom spacing in landscape */
+  .medibot-icon {
+    bottom: 20px;
+    right: 16px;
   }
 }
