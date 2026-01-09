@@ -11,6 +11,7 @@ import {
 } from "react-icons/fa";
 import { useNavigate, Link } from "react-router-dom";
 import LogoLink from "../components/LogoLink";
+import api from "../api";
 import "./AdminDashboard.css";
 
 export default function AdminDashboard() {
@@ -60,16 +61,7 @@ export default function AdminDashboard() {
 
   const fetchAppointments = async () => {
     try {
-      const res = await axios.get(
-        "http://localhost:5000/api/admin/appointments",
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem(
-              "adminToken"
-            )}`,
-          },
-        }
-      );
+      const res = await api.get("/admin/appointments");
       setAppointments(res.data);
       setFiltered(res.data);
     } catch (err) {
