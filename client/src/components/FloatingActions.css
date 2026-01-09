@@ -3,7 +3,7 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
-  z-index: 50; /* Much lower z-index to avoid overlapping with content */
+  z-index: 1000; /* High z-index to ensure visibility above other elements */
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -103,7 +103,7 @@
   .floating-actions {
     bottom: 100px; /* Increased bottom spacing to avoid mobile browser UI */
     right: 16px; /* Slightly less right margin on mobile */
-    z-index: 50; /* Keep below content but above background */
+    z-index: 1000; /* Maintain high z-index on mobile */
   }
 
   .floating-btn {

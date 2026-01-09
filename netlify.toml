@@ -26,13 +26,15 @@
     # Prevent mobile browsers from auto-detecting phone numbers
     format-detection = "telephone=no"
 
-# Cache static assets
+# Cache static assets with shorter duration and cache-busting
 [[headers]]
   for = "/static/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=3600, must-revalidate"
+    # Enable cache-busting for CSS/JS files
+    Vary = "Accept-Encoding"
 
-# Cache images
+# Cache images with reasonable duration
 [[headers]]
   for = "*.png"
   [headers.values]

@@ -401,7 +401,7 @@
 /* ================= RESPONSIVE DESIGN ================= */
 @media (max-width: 480px) {
   .ai-floating-button {
-    bottom: 79px;
+    bottom: 120px; /* Move higher to avoid FloatingActions overlap */
     right: 15px;
     width: 50px;
     height: 50px;
@@ -412,7 +412,7 @@
   }
 
   .ai-chat-modal {
-    bottom: 139px;
+    bottom: 180px; /* Adjust modal position accordingly */
     right: 15px;
   }
 
